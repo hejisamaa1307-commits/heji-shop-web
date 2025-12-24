@@ -1,0 +1,141 @@
+/* About Alert Styles */
+
+.about-title {
+  font-family: var(--font-nosifer), sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.about-section {
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.about-section-title {
+  font-family: var(--font-nosifer), sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.about-info {
+  color: #a1a1aa;
+  line-height: 1.6;
+}
+
+.about-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.about-contact-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.about-contact-item > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-contact-icon {
+  filter: brightness(0) invert(1);
+}
+
+.about-qr-image {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border-radius: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.about-bank-info {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.about-bank-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.about-service-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.about-image-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-service-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 0.75rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.about-guide-item {
+  margin-top: 1.5rem;
+}
+
+.about-guide-item h3 {
+  font-family: var(--font-nosifer), sans-serif;
+}
+
+.about-guide-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 0.75rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .about-title {
+    font-size: 2rem;
+  }
+
+  .about-section {
+    padding: 1rem;
+  }
+}
+

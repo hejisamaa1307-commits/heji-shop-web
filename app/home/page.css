@@ -1,0 +1,120 @@
+/* Home Page Styles */
+
+.home-background {
+ background-image: url('/images/bg1.png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.home-background::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+.home-background > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out;
+}
+
+/* Card hover effects */
+.group:hover {
+  transform: translateY(-4px);
+}
+
+/* Image container improvements */
+img {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Pagination styles */
+.pagination-button {
+  transition: all 0.2s ease;
+}
+
+.pagination-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .grid {
+    gap: 1rem;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Price filter button styles (if needed) */
+.price-filter-btn {
+  padding: 0.5rem 1rem;
+  border: 2px solid #e5e7eb;
+  background: white;
+  color: #000000;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.price-filter-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.price-filter-btn:hover::before {
+  left: 100%;
+}
+
+.price-filter-btn:hover {
+  border-color: #2563eb;
+  color: #2563eb;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.price-filter-btn.active {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: white;
+  border-color: #2563eb;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
+  transform: scale(1.05);
+}
+
+.price-filter-btn.active:hover {
+  transform: translateY(-2px) scale(1.08);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+}

@@ -1,0 +1,1305 @@
+/* Account Detail Page Styles - Dark Card Theme */
+
+.account-detail-background {
+  background: #000000;
+  position: relative;
+  min-height: 100vh;
+}
+
+.account-detail-background > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Main Card Container */
+.account-main-card {
+  background: #000000;
+  color: #ffffff;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+
+.account-main-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(147, 51, 234, 0.05) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Image Container */
+.account-image-container {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  max-height: 600px;
+  background: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.account-image-gallery {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.account-main-image-wrapper {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+
+.account-image {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+/* Navigation Arrows */
+.account-image-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.account-image-nav:hover {
+  background: rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.account-image-nav-prev {
+  left: 1rem;
+}
+
+.account-image-nav-next {
+  right: 1rem;
+}
+
+/* Thumbnails */
+.account-image-thumbnails {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0.5rem;
+  max-height: 120px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.account-thumbnail {
+  width: 80px;
+  height: 80px;
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.account-thumbnail img,
+.account-thumbnail > span {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  display: block;
+}
+
+.account-thumbnail:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+  transform: scale(1.05);
+}
+
+.account-thumbnail-active {
+  border-color: #ffffff;
+  border-width: 4px;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+.account-thumbnail-active:hover {
+  transform: scale(1.05);
+}
+
+.account-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #000000 0%, #000000 100%);
+}
+
+.account-price-badge {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: #000000;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+/* Details Section */
+.account-details-section {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 500px;
+  background: #000000;
+  position: relative;
+}
+
+.account-details-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(147, 51, 234, 0.05) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (min-width: 1024px) {
+  .account-details-section {
+    padding: 3rem;
+  }
+}
+
+.account-details-content {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+/* Title Row */
+.account-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.account-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  transition: color 0.3s ease;
+  flex: 1;
+  min-width: 200px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Price Badge Inline */
+.account-price-badge-inline {
+  background: #000000;
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 0.75rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  display: inline-block;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.account-price-badge-inline:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* Account ID */
+.account-id {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.account-id-icon {
+  width: 14px;
+  height: 14px;
+  color: #a1a1aa;
+  flex-shrink: 0;
+}
+
+.account-id-label {
+  font-size: 0.75rem;
+  color: #a1a1aa;
+  font-weight: 500;
+}
+
+.account-id-value {
+  font-size: 0.75rem;
+  color: #ffffff;
+  font-weight: 600;
+  font-family: monospace;
+  letter-spacing: 0.05em;
+}
+
+.account-main-acc {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(59, 130, 246, 0.15);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.account-main-acc-icon {
+  width: 14px;
+  height: 14px;
+  color: #60a5fa;
+  flex-shrink: 0;
+}
+
+.account-main-acc-label {
+  font-size: 0.75rem;
+  color: #93c5fd;
+  font-weight: 500;
+}
+
+.account-main-acc-value {
+  font-size: 0.75rem;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.account-main-acc-section {
+  margin-bottom: 2rem;
+}
+
+.account-main-acc-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(59, 130, 246, 0.15);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  margin-top: 0.75rem;
+}
+
+.account-section-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+/* Stats Section */
+.account-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+}
+
+.account-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.account-stat-icon {
+  width: 18px;
+  height: 18px;
+  color: #fbbf24;
+  flex-shrink: 0;
+}
+
+.account-stat-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.125rem;
+}
+
+.account-stat-value {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.account-stat-label {
+  font-size: 0.6875rem;
+  color: #a1a1aa;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Account Main Acc (Owner) */
+.account-main-acc {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(59, 130, 246, 0.15);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.account-main-acc-icon {
+  width: 16px;
+  height: 16px;
+  color: #60a5fa;
+  flex-shrink: 0;
+}
+
+.account-main-acc-label {
+  font-size: 0.875rem;
+  color: #93c5fd;
+  font-weight: 500;
+}
+
+.account-main-acc-value {
+  font-size: 0.875rem;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.account-description-section {
+  margin-bottom: 2rem;
+}
+
+.account-section-description {
+  font-size: 1rem;         
+  font-weight: 400;         
+  color: #e0e0e0;         
+  line-height: 1.6;         
+  margin-bottom: 1.5rem;    
+  max-width: 600px;         
+  letter-spacing: 0.5px;    
+}
+
+
+.account-description-text {
+  color: #a1a1aa;
+  line-height: 1.75;
+  white-space: pre-line;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Custom scrollbar */
+.account-description-text::-webkit-scrollbar {
+  width: 6px;
+}
+
+.account-description-text::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.account-description-text::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 3px;
+}
+
+.account-description-text::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* Installment Icon Button Styles - Removed, now integrated into action buttons */
+
+/* Installment Calculator Styles */
+.account-installment-section {
+  margin-bottom: 2rem;
+}
+
+.installment-calculator {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  margin-top: 1rem;
+}
+
+.installment-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.installment-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.installment-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.installment-hint {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #a1a1aa;
+}
+
+.installment-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.installment-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  padding-right: 4rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.installment-input:focus {
+  outline: none;
+  border-color: rgba(59, 130, 246, 0.5);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.installment-input-suffix {
+  position: absolute;
+  right: 1rem;
+  color: #a1a1aa;
+  font-size: 0.875rem;
+  pointer-events: none;
+}
+
+.installment-error {
+  color: #ef4444;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.installment-months-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.installment-month-btn {
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.installment-month-btn:hover {
+  background: rgba(0, 0, 0, 0.6);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.installment-month-btn.active {
+  background: rgba(59, 130, 246, 0.3);
+  border-color: #3b82f6;
+  color: #60a5fa;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.installment-results {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  margin-top: 1.5rem;
+}
+
+.installment-result-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.installment-result-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.installment-result-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.installment-result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.installment-result-item.highlight {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.installment-result-item.total {
+  background: rgba(251, 191, 36, 0.15);
+  border-color: rgba(251, 191, 36, 0.3);
+  border-width: 2px;
+}
+
+.installment-result-label {
+  font-size: 0.875rem;
+  color: #a1a1aa;
+  font-weight: 500;
+}
+
+.installment-result-value {
+  font-size: 1rem;
+  color: #ffffff;
+  font-weight: 700;
+  font-family: monospace;
+}
+
+.installment-result-item.total .installment-result-value {
+  color: #fbbf24;
+  font-size: 1.125rem;
+}
+
+.installment-summary {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.installment-summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 0.5rem;
+  border: 2px solid rgba(251, 191, 36, 0.3);
+}
+
+.installment-summary-item span:first-child {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.installment-summary-total {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fbbf24;
+  font-family: monospace;
+}
+
+.installment-summary-note {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: #a1a1aa;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Monthly Breakdown Styles */
+.installment-monthly-breakdown {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.installment-breakdown-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.installment-breakdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 0.5rem;
+}
+
+/* Custom scrollbar for breakdown list */
+.installment-breakdown-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.installment-breakdown-list::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+}
+
+.installment-breakdown-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.installment-breakdown-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.installment-breakdown-item {
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.installment-breakdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.installment-breakdown-month {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #60a5fa;
+}
+
+.installment-breakdown-total {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #fbbf24;
+  font-family: monospace;
+}
+
+.installment-breakdown-details {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.installment-breakdown-detail {
+  font-size: 0.6875rem;
+  color: #a1a1aa;
+  font-family: monospace;
+}
+
+.installment-error-box {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(239, 68, 68, 0.15);
+  border: 2px solid rgba(239, 68, 68, 0.3);
+  border-radius: 0.5rem;
+  color: #ef4444;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}
+
+/* Responsive for installment calculator */
+@media (max-width: 768px) {
+  .installment-months-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .installment-calculator {
+    padding: 1rem;
+  }
+
+  .installment-results {
+    padding: 1rem;
+  }
+
+  .installment-result-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+
+/* Action Buttons */
+.account-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.account-button-primary {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  background: #000000;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.account-button-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.account-button-primary:hover::before {
+  opacity: 1;
+}
+
+.account-button-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  background: #1a1a1a;
+}
+
+.account-button-primary:active {
+  transform: translateY(0);
+}
+
+.account-button-secondary {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  background: #000000;
+  color: #ffffff;
+  font-weight: 600;
+  border: 2.5px solid rgba(255, 255, 255, 0.4);
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.account-button-secondary:hover {
+  background: #1a1a1a;
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Related Accounts Section */
+.related-accounts-section {
+  margin-top: 3rem;
+}
+
+.related-accounts-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-nosifer);
+}
+
+.related-accounts-placeholder {
+  text-align: center;
+  padding: 3rem;
+  background: linear-gradient(135deg, #000000 0%, #000000 100%);
+  border-radius: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.related-accounts-text {
+  color: #a1a1aa;
+  font-size: 1rem;
+}
+
+/* Account Carousel Styles */
+.account-carousel-container {
+  position: relative;
+  padding: 1rem 0;
+}
+
+.account-carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+}
+
+.account-carousel-nav:hover {
+  background: rgba(0, 0, 0, 0.9);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.account-carousel-nav-prev {
+  left: -24px;
+}
+
+.account-carousel-nav-next {
+  right: -24px;
+}
+
+.account-carousel-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0.5rem;
+}
+
+.account-carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.account-carousel-dot:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.2);
+}
+
+.account-carousel-dot.active {
+  background: #ffffff;
+  border-color: #ffffff;
+  width: 12px;
+  height: 12px;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive for carousel */
+@media (max-width: 1024px) {
+  .account-carousel-nav {
+    width: 40px;
+    height: 40px;
+  }
+
+  .account-carousel-nav svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .account-carousel-nav-prev {
+    left: -20px;
+  }
+
+  .account-carousel-nav-next {
+    right: -20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .account-carousel-nav {
+    width: 36px;
+    height: 36px;
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .account-carousel-nav svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .account-carousel-nav-prev {
+    left: 0.5rem;
+  }
+
+  .account-carousel-nav-next {
+    right: 0.5rem;
+  }
+
+  .account-carousel-container .grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .account-image-container {
+    min-height: 300px;
+    max-height: 400px;
+  }
+
+  .account-details-section {
+    min-height: auto;
+  }
+
+  .account-title {
+    font-size: 1.875rem;
+  }
+
+  .account-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .account-image-container {
+    min-height: 250px;
+    max-height: 300px;
+    padding: 1rem;
+  }
+
+  .account-main-image-wrapper {
+    min-height: 200px;
+  }
+
+  .account-image-nav {
+    width: 32px;
+    height: 32px;
+  }
+
+  .account-image-nav svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .account-image-nav-prev {
+    left: 0.5rem;
+  }
+
+  .account-image-nav-next {
+    right: 0.5rem;
+  }
+
+  .account-image-thumbnails {
+    max-height: 100px;
+    gap: 0.5rem;
+    padding: 0.25rem;
+  }
+
+  .account-thumbnail {
+    width: 60px;
+    height: 60px;
+  }
+
+  .account-price-badge {
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+
+  .account-details-section {
+    padding: 1.5rem;
+  }
+
+  .account-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .account-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .account-price-badge-inline {
+    width: 100%;
+    text-align: center;
+  }
+
+  .account-description-section {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Zoom Button */
+.account-image-zoom-btn {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+}
+
+.account-image-zoom-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: scale(1.1);
+}
+
+/* Zoom Modal */
+.account-image-zoom-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.account-image-zoom-content {
+  position: relative;
+  max-width: 95vw;
+  max-height: 95vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.account-image-zoomed {
+  max-width: 100%;
+  max-height: 95vh;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.account-image-zoom-close {
+  position: absolute;
+  top: -3rem;
+  right: 0;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+}
+
+.account-image-zoom-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+}
+
+.account-image-zoom-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+}
+
+.account-image-zoom-nav:hover {
+  background: rgba(0, 0, 0, 0.9);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.account-image-zoom-nav-prev {
+  left: -3rem;
+}
+
+.account-image-zoom-nav-next {
+  right: -3rem;
+}
+
+.account-image-zoom-indicator {
+  position: absolute;
+  bottom: -3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive for Zoom Modal */
+@media (max-width: 768px) {
+  .account-image-zoom-modal {
+    padding: 1rem;
+  }
+
+  .account-image-zoom-close {
+    top: -2.5rem;
+    width: 40px;
+    height: 40px;
+  }
+
+  .account-image-zoom-nav {
+    width: 44px;
+    height: 44px;
+  }
+
+  .account-image-zoom-nav-prev {
+    left: 0.5rem;
+  }
+
+  .account-image-zoom-nav-next {
+    right: 0.5rem;
+  }
+
+  .account-image-zoom-indicator {
+    bottom: -2.5rem;
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+  }
+
+  .account-image-zoom-btn {
+    width: 40px;
+    height: 40px;
+    bottom: 0.75rem;
+    right: 0.75rem;
+  }
+
+  .account-image-zoom-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+}

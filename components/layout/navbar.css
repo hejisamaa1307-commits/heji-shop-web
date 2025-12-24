@@ -1,0 +1,146 @@
+/* Navbar Logo */
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+/* Desktop nav links */
+.nav-link,
+.nav-link-button {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: #fff;
+    /* chữ trắng */
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    border-radius: 0.5rem;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dark .nav-link,
+.dark .nav-link-button {
+    color: #fff;
+}
+
+.nav-link-button {
+    border: none;
+}
+
+/* Hover effect */
+.nav-link:hover,
+.nav-link-button:hover {
+    color: #00e0ff;
+    /* highlight neon */
+    transform: translateY(-2px);
+}
+
+/* Dropdown desktop */
+.price-dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    background: #000000;
+    border-radius: 0.5rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    min-width: 180px;
+    z-index: 50;
+
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: fadeSlideDown 0.25s forwards;
+}
+
+.dark .price-dropdown {
+    background: #000000;
+}
+
+.price-dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: transparent;
+    border: none;
+    text-align: left;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.price-dropdown-item:hover {
+    background-color: #1a1a1a;
+    transform: translateX(3px);
+}
+
+/* Mobile menu */
+.mobile-link,
+.mobile-link-button {
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    color: #fff;
+    /* chữ trắng */
+    font-weight: 700;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.dark .mobile-link,
+.dark .mobile-link-button {
+    color: #fff;
+}
+
+/* Mobile dropdown */
+.mobile-price-dropdown {
+    margin-top: 0.5rem;
+    background: #000000;
+    border-radius: 0.5rem;
+    z-index: 50;
+    max-height: 400px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: fadeSlideDown 0.25s forwards;
+}
+
+.dark .mobile-price-dropdown {
+    background: #000000;
+}
+
+.mobile-price-dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: transparent;
+    border: none;
+    text-align: left;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mobile-price-dropdown-item:hover {
+    background-color: #1a1a1a;
+    transform: translateX(3px);
+}
+
+/* Animation keyframes */
+@keyframes fadeSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
