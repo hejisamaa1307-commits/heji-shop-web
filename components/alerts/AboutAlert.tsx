@@ -83,7 +83,7 @@ export default function AboutAlert({ isOpen, onClose }: AboutAlertProps) {
                       <div className="text-center">
                         <p className="font-semibold text-white mb-2">Facebook chính</p>
                         <a
-                          href="https://www.facebook.com/heji.sama.13722"
+                          href="https://www.facebook.com/share/14NcPt3W8mx/?mibextid=wwXIfr"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block"
