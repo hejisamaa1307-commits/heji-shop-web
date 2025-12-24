@@ -19,7 +19,7 @@ function generateRandomAccountName(): string {
   for (let i = 0; i < length; i++) {
     randomString += chars.charAt(Math.floor(Math.random() * chars.length));
   }
-  return `hieu_${randomString}`;
+  return `heji_${randomString}`;
 }
 
 export default function AddAccountAlert({ isOpen, onClose, onSuccess }: AddAccountAlertProps) {
