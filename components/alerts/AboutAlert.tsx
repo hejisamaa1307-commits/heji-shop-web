@@ -83,7 +83,7 @@ export default function AboutAlert({ isOpen, onClose }: AboutAlertProps) {
                       <div className="text-center">
                         <p className="font-semibold text-white mb-2">Facebook chính</p>
                         <a
-                          href="https://www.facebook.com/share/1BuyE1mxLT/?mibextid=wwXIfr"
+                          href="https://www.facebook.com/heji.sama.13722"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block"
@@ -110,13 +110,13 @@ export default function AboutAlert({ isOpen, onClose }: AboutAlertProps) {
                       <div className="text-center">
                         <p className="font-semibold text-white mb-2">Zalo</p>
                         <a
-                          href="https://zalo.me/g/ayruet946"
+                          href="https://zalo.me/g/fltldd910"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block"
                         >
                           <Image
-                            src="/images/about/boxzalo.png"
+                            src="/images/about/boxzalo_1.png"
                             alt="Zalo QR"
                             width={200}
                             height={200}
