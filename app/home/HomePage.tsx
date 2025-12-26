@@ -8,6 +8,7 @@ import Loading from '@/components/features/Loading';
 import Card from '@/components/features/card';
 import { useIsAdmin } from '@/app/lib/useIsAdmin';
 import UpdateAccountAlert from '@/components/alerts/UpdateAccountAlert';
+import Snowfall from 'react-snowfall';
 
 const ITEMS_PER_PAGE = 16;
 
@@ -419,8 +420,19 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen home-background py-8 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen home-background py-8 px-4 sm:px-6 lg:px-8 relative">
+      <Snowfall
+        style={{
+          position: 'fixed',
+          width: '100vw',
+          height: '100vh',
+          zIndex: 1,
+          pointerEvents: 'none'
+        }}
+        snowflakeCount={200}
+        color="#ffffff"
+      />
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Header Section */}
         <div className="text-center mb-6 animate-fade-in">
           <p className="text-gray-600 dark:text-gray-400 text-lg" style={{ fontFamily: 'var(--font-nosifer), sans-serif' }}>
