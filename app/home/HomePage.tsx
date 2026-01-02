@@ -11,6 +11,9 @@ import UpdateAccountAlert from '@/components/alerts/UpdateAccountAlert';
 
 const ITEMS_PER_PAGE = 16;
 
+// Danh sách chủ tài khoản ưu tiên (sẽ hiển thị lên đầu)
+const PRIORITY_OWNERS = ['Phát', 'Huy', 'Hiếu', 'HEJI'].map(name => name.toLowerCase().trim());
+
 export default function HomePage() {
   const [accounts, setAccounts] = useState<any[]>([]);
   const [filteredAccounts, setFilteredAccounts] = useState<any[]>([]);
@@ -88,8 +91,43 @@ export default function HomePage() {
       // All accounts are verified, no filtering needed
     }
 
-    // Apply sorting
+    // Apply sorting với ưu tiên chủ tài khoản
     filtered.sort((a, b) => {
+      // Kiểm tra xem tài khoản có trong danh sách ưu tiên không
+      const mainAccA = (a.main_acc || '').toLowerCase().trim();
+      const mainAccB = (b.main_acc || '').toLowerCase().trim();
+
+      // Kiểm tra xem main_acc có chứa tên ưu tiên không (cho phép match một phần)
+      const getPriorityIndex = (mainAcc: string): number => {
+        for (let i = 0; i < PRIORITY_OWNERS.length; i++) {
+          if (mainAcc.includes(PRIORITY_OWNERS[i]) || PRIORITY_OWNERS[i].includes(mainAcc)) {
+            return i;
+          }
+        }
+        return -1; // Không phải ưu tiên
+      };
+
+      const priorityIndexA = getPriorityIndex(mainAccA);
+      const priorityIndexB = getPriorityIndex(mainAccB);
+      const isPriorityA = priorityIndexA !== -1;
+      const isPriorityB = priorityIndexB !== -1;
+
+      // Nếu một trong hai là ưu tiên, đưa lên đầu
+      if (isPriorityA && !isPriorityB) {
+        return -1; // a lên trước
+      }
+      if (!isPriorityA && isPriorityB) {
+        return 1; // b lên trước
+      }
+
+      // Nếu cả hai đều ưu tiên, sắp xếp theo thứ tự trong danh sách ưu tiên
+      if (isPriorityA && isPriorityB) {
+        if (priorityIndexA !== priorityIndexB) {
+          return priorityIndexA - priorityIndexB; // Sắp xếp theo thứ tự trong danh sách
+        }
+      }
+
+      // Sau đó áp dụng sorting theo tiêu chí đã chọn
       switch (sortBy) {
         case 'popular':
           // Sort by created_at (newest first)
