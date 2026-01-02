@@ -8,7 +8,6 @@ import Loading from '@/components/features/Loading';
 import Card from '@/components/features/card';
 import { useIsAdmin } from '@/app/lib/useIsAdmin';
 import UpdateAccountAlert from '@/components/alerts/UpdateAccountAlert';
-import Snowfall from 'react-snowfall';
 
 const ITEMS_PER_PAGE = 16;
 
@@ -420,19 +419,8 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen home-background py-8 px-4 sm:px-6 lg:px-8 relative">
-      <Snowfall
-        style={{
-          position: 'fixed',
-          width: '100vw',
-          height: '100vh',
-          zIndex: 1,
-          pointerEvents: 'none'
-        }}
-        snowflakeCount={200}
-        color="#ffffff"
-      />
-      <div className="max-w-7xl mx-auto relative z-10">
+    <div className="min-h-screen home-background py-8 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-6 animate-fade-in">
           <p className="text-gray-600 dark:text-gray-400 text-lg" style={{ fontFamily: 'var(--font-nosifer), sans-serif' }}>
@@ -448,17 +436,13 @@ export default function HomePage() {
               <label className="block text-xs text-gray-500 dark:text-gray-400 mb-1">
                 Price: {selectedPrice === 'any' && !customMinPrice && !customMaxPrice ? 'Any' :
                   customMinPrice || customMaxPrice ? `Tùy chỉnh` :
-                    selectedPrice === '0-1000000' ? 'Dưới 1 triệu' :
-                      selectedPrice === '1000000-2000000' ? '1 - 2 triệu' :
-                        selectedPrice === '2000000-3000000' ? '2 - 3 triệu' :
-                          selectedPrice === '3000000-4000000' ? '3 - 4 triệu' :
-                            selectedPrice === '4000000-5000000' ? '4 - 5 triệu' :
-                              selectedPrice === '5000000-6000000' ? '5 - 6 triệu' :
-                                selectedPrice === '6000000-7000000' ? '6 - 7 triệu' :
-                                  selectedPrice === '7000000-8000000' ? '7 - 8 triệu' :
-                                    selectedPrice === '8000000-9000000' ? '8 - 9 triệu' :
-                                      selectedPrice === '9000000-10000000' ? '9 - 10 triệu' :
-                                        selectedPrice === '10000000-999999999' ? 'Trên 10 triệu' : 'Any'}
+                    selectedPrice === '1000000-5000000' ? '1 - 5 triệu' :
+                      selectedPrice === '5000000-10000000' ? '5 - 10 triệu' :
+                        selectedPrice === '10000000-20000000' ? '10 - 20 triệu' :
+                          selectedPrice === '20000000-30000000' ? '20 - 30 triệu' :
+                            selectedPrice === '30000000-50000000' ? '30 - 50 triệu' :
+                              selectedPrice === '50000000-100000000' ? '50 - 100 triệu' :
+                                selectedPrice === '100000000-500000000' ? '100 - 500 triệu' : 'Any'}
               </label>
               <select
                 value={selectedPrice}
@@ -477,17 +461,13 @@ export default function HomePage() {
                 className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-black text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all appearance-none cursor-pointer mb-2"
               >
                 <option value="any">Any</option>
-                <option value="0-1000000">Dưới 1 triệu</option>
-                <option value="1000000-2000000">1 - 2 triệu</option>
-                <option value="2000000-3000000">2 - 3 triệu</option>
-                <option value="3000000-4000000">3 - 4 triệu</option>
-                <option value="4000000-5000000">4 - 5 triệu</option>
-                <option value="5000000-6000000">5 - 6 triệu</option>
-                <option value="6000000-7000000">6 - 7 triệu</option>
-                <option value="7000000-8000000">7 - 8 triệu</option>
-                <option value="8000000-9000000">8 - 9 triệu</option>
-                <option value="9000000-10000000">9 - 10 triệu</option>
-                <option value="10000000-999999999">Trên 10 triệu</option>
+                <option value="1000000-5000000">1 - 5 triệu</option>
+                <option value="5000000-10000000">5 - 10 triệu</option>
+                <option value="10000000-20000000">10 - 20 triệu</option>
+                <option value="20000000-30000000">20 - 30 triệu</option>
+                <option value="30000000-50000000">30 - 50 triệu</option>
+                <option value="50000000-100000000">50 - 100 triệu</option>
+                <option value="100000000-500000000">100 - 500 triệu</option>
               </select>
               {/* Custom Price Input */}
               <div className="flex gap-2 mt-2">

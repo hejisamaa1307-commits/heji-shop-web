@@ -14,6 +14,14 @@ import {
 
 export function ModeToggle() {
   const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  // Prevent hydration mismatch by using a default state until mounted
+  const isDark = mounted && theme === "dark"
 
   return (
     <DropdownMenu>
@@ -24,14 +32,12 @@ export function ModeToggle() {
           className="relative text-black dark:text-white transition-colors duration-300"
         >
           <Sun
-            className={`h-5 w-5 absolute transition-all duration-500 ${
-              theme === "dark" ? "opacity-0 rotate-90 scale-0" : "opacity-100 rotate-0 scale-100"
-            }`}
+            className={`h-5 w-5 absolute transition-all duration-500 ${isDark ? "opacity-0 rotate-90 scale-0" : "opacity-100 rotate-0 scale-100"
+              }`}
           />
           <Moon
-            className={`h-5 w-5 absolute transition-all duration-500 ${
-              theme === "dark" ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-90 scale-0"
-            }`}
+            className={`h-5 w-5 absolute transition-all duration-500 ${isDark ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-90 scale-0"
+              }`}
           />
           <span className="sr-only">Toggle theme</span>
         </Button>

@@ -11,7 +11,7 @@ interface AddAccountAlertProps {
   onSuccess?: () => void;
 }
 
-// Hàm tạo tên tài khoản ngẫu nhiên theo format hieu_xxxxxx
+// Hàm tạo tên tài khoản ngẫu nhiên theo format fat_xxxxxx
 function generateRandomAccountName(): string {
   const chars = '0123456789abcdefghijklmnopqrstuvwxyz';
   const length = 6;
@@ -19,12 +19,13 @@ function generateRandomAccountName(): string {
   for (let i = 0; i < length; i++) {
     randomString += chars.charAt(Math.floor(Math.random() * chars.length));
   }
-  return `heji_${randomString}`;
+  return `fat_${randomString}`;
 }
 
 export default function AddAccountAlert({ isOpen, onClose, onSuccess }: AddAccountAlertProps) {
   const [priceText, setPriceText] = useState("");
   const [mainAcc, setMainAcc] = useState("");
+  const [translatedPriceText, setTranslatedPriceText] = useState("");
   const [files, setFiles] = useState<File[]>([]);
   const [previews, setPreviews] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
@@ -39,6 +40,7 @@ export default function AddAccountAlert({ isOpen, onClose, onSuccess }: AddAccou
     if (!isOpen) {
       setPriceText("");
       setMainAcc("");
+      setTranslatedPriceText("");
       setFiles([]);
       setPreviews([]);
       setMessage(null);
@@ -188,6 +190,126 @@ export default function AddAccountAlert({ isOpen, onClose, onSuccess }: AddAccou
     return null;
   };
 
+  // Parse giá từ text với nhiều format (ví dụ: "3m2", "2m5", "48", "26.5", "7m", "7.8")
+  const parsePriceFromText = (text: string): number | null => {
+    const trimmed = text.trim().toLowerCase();
+    // Bỏ qua text không phải số (như "bay", "gct dư", v.v.)
+    if (/^[a-záàảãạăắằẳẵặâấầẩẫậéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵđ\s]+$/i.test(trimmed)) {
+      return null;
+    }
+    // Format có "m": 3m2 = 3.2 triệu, 2m5 = 2.5 triệu, 7m = 7 triệu
+    if (trimmed.includes('m')) {
+      const parts = trimmed.split('m');
+      const millions = parseFloat(parts[0]) || 0;
+      const decimalPart = parts[1] ? parseFloat(parts[1]) / 10 : 0;
+      return (millions + decimalPart) * 1000000;
+    }
+    // Format số thập phân hoặc số nguyên: 48 = 48 triệu, 26.5 = 26.5 triệu, 7.8 = 7.8 triệu
+    const cleaned = trimmed.replace(/[,\s]/g, '');
+    const num = parseFloat(cleaned);
+    if (!isNaN(num) && num > 0) {
+      // Coi như triệu nếu không có "m"
+      return num * 1000000;
+    }
+    return null;
+  };
+
+  // Function để đôn giá theo rule
+  const donGia = (price: number): number => {
+    const priceInMillion = price / 1000000;
+    if (priceInMillion < 3) {
+      return price + 200000; // +200k
+    } else if (priceInMillion < 5) {
+      return price + 300000; // +300k
+    } else if (priceInMillion < 7) {
+      return price + 400000; // +400k
+    } else if (priceInMillion < 10) {
+      return price + 500000; // +500k
+    } else if (priceInMillion < 20) {
+      return price + 600000; // +600k
+    } else if (priceInMillion < 50) {
+      return price + 1000000; // +1m
+    } else if (priceInMillion < 100) {
+      return price + 2000000; // +2m
+    } else {
+      return price + 5000000; // +5m
+    }
+  };
+
+  // Function để format giá thành string
+  const formatPriceToString = (price: number): string => {
+    const priceInMillion = price / 1000000;
+    const wholePart = Math.floor(priceInMillion);
+    const decimalPart = priceInMillion - wholePart;
+    if (decimalPart > 0) {
+      const roundedDecimal = Math.round(decimalPart * 10) / 10;
+      if (roundedDecimal === 0.5) {
+        return `${wholePart}m5`;
+      } else {
+        return `${wholePart}m${Math.round(roundedDecimal * 10)}`;
+      }
+    }
+    return `${wholePart}m`;
+  };
+
+  // Function chính để translate giá
+  const translatePrices = (inputText: string): string => {
+    const allPrices: number[] = [];
+    // Parse tất cả giá từ input (bất kể format: có dấu "-", khoảng trắng, hoặc xuống dòng)
+    // Ví dụ: "16m  - 13m -52m" hoặc "16m         13m\n52m"
+    // Normalize: thay tất cả dấu "-" (có hoặc không có space) thành space
+    let normalizedText = inputText.replace(/\s*-\s*/g, ' '); // Thay " - " hoặc "-" thành space
+    normalizedText = normalizedText.replace(/\s+/g, ' '); // Thay nhiều space thành 1 space
+    const allParts = normalizedText.split(/[\s\n]+/).filter(part => part.trim());
+    // Parse từng phần thành giá
+    allParts.forEach(part => {
+      // Loại bỏ dấu "-" ở đầu nếu có (ví dụ: "-52m" -> "52m")
+      const cleanedPart = part.replace(/^-+/, '').trim();
+      const price = parsePriceFromText(cleanedPart);
+      if (price !== null && price > 0) {
+        allPrices.push(price);
+      }
+    });
+    if (allPrices.length === 0) {
+      throw new Error('Không tìm thấy giá nào trong text! Vui lòng kiểm tra lại format (ví dụ: 3m2, 2m5, 48, 26.5)');
+    }
+    // Apply đôn giá
+    const donGiaPrices = allPrices.map(price => donGia(price));
+    // Format lại thành string với format: giá1 - giá2 - giá3 (mỗi hàng đúng 3 giá)
+    // Kéo giá lên để đủ 3 giá mỗi hàng
+    const formattedPrices: string[] = [];
+    for (let i = 0; i < donGiaPrices.length; i += 3) {
+      const linePrices = donGiaPrices.slice(i, i + 3);
+      const formattedLine = linePrices.map(formatPriceToString);
+      // Đảm bảo luôn có đủ 3 giá mỗi hàng (nếu thiếu thì thêm chuỗi rỗng)
+      while (formattedLine.length < 3) {
+        formattedLine.push('');
+      }
+      // Join bằng " - " và loại bỏ dấu "-" thừa ở cuối
+      const joined = formattedLine.join(' - ').replace(/\s*-\s*$/, '');
+      formattedPrices.push(joined);
+    }
+    return formattedPrices.join('\n');
+  };
+
+  // Handler để translate
+  const handleTranslatePrices = () => {
+    if (!translatedPriceText.trim()) {
+      setMessage({ type: "error", text: "Vui lòng nhập text cần translate!" });
+      setTimeout(() => setMessage(null), 3000);
+      return;
+    }
+    try {
+      const translated = translatePrices(translatedPriceText);
+      setPriceText(translated);
+      setMessage({ type: "success", text: `Đã translate và đôn giá thành công! Tìm thấy ${translated.split('\n').reduce((acc, line) => acc + line.split(' - ').length, 0)} giá.` });
+      setTimeout(() => setMessage(null), 3000);
+    } catch (error: any) {
+      setMessage({ type: "error", text: error.message || "Lỗi khi translate giá!" });
+      setTimeout(() => setMessage(null), 3000);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -242,7 +364,7 @@ export default function AddAccountAlert({ isOpen, onClose, onSuccess }: AddAccou
       }
 
       const mainAccValue = mainAcc.trim() || null;
-      const description = "Hỗ trợ ae góp chỉ từ 30% giá acc (ấn chức năng 'Tính góp' để tính góp)";
+      const description = "Hỗ trợ ae góp chỉ từ 30% giá acc ( Ấn chức năng 'Tính góp' để tính góp ).";
       const userId = session.user.id; // Cache user ID
 
       // Bước 1: Upload tất cả ảnh song song (parallel) với progress tracking
@@ -480,6 +602,30 @@ export default function AddAccountAlert({ isOpen, onClose, onSuccess }: AddAccou
             )}
 
             <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+              <div>
+                <label className="block text-xs sm:text-sm font-medium text-gray-300 mb-1 sm:mb-2">
+                  Translate giá từ text (tùy chọn)
+                </label>
+                <div className="flex flex-col sm:flex-row gap-2 mb-2">
+                  <textarea
+                    value={translatedPriceText}
+                    onChange={(e) => setTranslatedPriceText(e.target.value)}
+                    rows={4}
+                    className="flex-1 px-3 sm:px-4 py-2.5 sm:py-2 text-xs sm:text-sm border border-white/30 rounded-lg bg-black/50 text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+                    placeholder="Paste text cần translate ở đây (ví dụ: 3m2, 2m5, BAY - 3m2. Gct dư - 2m...)"
+                  />
+                  <button
+                    type="button"
+                    onClick={handleTranslatePrices}
+                    className="px-4 py-2.5 sm:py-2 bg-purple-600 hover:bg-purple-700 active:bg-purple-800 text-white rounded-lg text-xs sm:text-sm font-medium transition-colors whitespace-nowrap"
+                  >
+                    Translate & Đôn giá
+                  </button>
+                </div>
+                <p className="text-[10px] sm:text-xs text-gray-400 mb-3">
+                  Paste text chứa giá (ví dụ: 3m2, 2m5) → Tự động parse và đôn giá theo rule
+                </p>
+              </div>
               <div>
                 <label className="block text-xs sm:text-sm font-medium text-gray-300 mb-1 sm:mb-2">
                   Giá (VNĐ) - Mỗi dòng tối đa 3 giá, cách nhau bởi " - "
