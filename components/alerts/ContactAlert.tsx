@@ -85,7 +85,7 @@ export default function ContactAlert({ isOpen, onClose }: ContactAlertProps) {
 
               {/* Facebook */}
               <a
-                href="https://www.facebook.com/share/14NcPt3W8mx/?mibextid=wwXIfr"
+                href="https://www.facebook.com/share/17zFeL343L/?mibextid=wwXIfr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 px-6 py-4 bg-white/10 hover:bg-white/20 rounded-lg border border-white/30 text-blue-400 hover:text-blue-300 font-bold transition-all"

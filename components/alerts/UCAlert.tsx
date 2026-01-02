@@ -61,7 +61,7 @@ export default function UCAlert({ isOpen, onClose }: UCAlertProps) {
 
           {/* FACEBOOK */}
           <a
-            href="https://www.facebook.com/share/14NcPt3W8mx/?mibextid=wwXIfr"
+            href="https://www.facebook.com/share/17zFeL343L/?mibextid=wwXIfr"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-5 py-2.5 rounded-lg
