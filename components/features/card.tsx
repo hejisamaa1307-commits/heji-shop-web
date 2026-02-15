@@ -23,6 +23,9 @@ interface CardProps {
 export default function Card({ imageUrl, title, description, price, onClick, onSave, onDelete, onUpdate, href, id, createdAt, mainAcc, isAdmin }: CardProps) {
   const [isSaved, setIsSaved] = useState(false);
 
+  // Replace 'fat' with 'heji' in title for display
+  const displayTitle = title.replace(/fat/g, 'heji');
+
   const handleSave = (e: React.MouseEvent) => {
     e.stopPropagation();
     setIsSaved(!isSaved);
@@ -108,7 +111,7 @@ export default function Card({ imageUrl, title, description, price, onClick, onS
 
       <div className="card-content">
         <div className="card-title-row">
-          <h3 className="card-title">{title}</h3>
+          <h3 className="card-title">{displayTitle}</h3>
           <div className="card-price">{priceDisplay} VND</div>
         </div>
 
