@@ -361,7 +361,7 @@ export default function HomePage() {
     }
     setAccountToUpdate(account);
     setUpdateTitle(account.title || "");
-    setUpdatePrice(account.price || "");
+    setUpdatePrice(String(account.price || ""));
     setUpdateDesc(account.description || "");
     setUpdateMainAcc(account.main_acc || "");
     setIsUpdateAlertOpen(true);
@@ -804,14 +804,14 @@ export default function HomePage() {
               {currentAccounts.map((acc) => (
                 <Card
                   key={acc.id}
-                  imageUrl={acc.image_url}
+                  imageUrl={acc.image_url ?? undefined}
                   title={acc.title || 'Không có tiêu đề'}
-                  description={acc.description}
+                  description={acc.description ?? undefined}
                   price={acc.price}
                   id={acc.id}
-                  createdAt={acc.created_at}
+                  createdAt={acc.created_at ?? undefined}
                   href={`/account/${acc.id}`}
-                  mainAcc={acc.main_acc}
+                  mainAcc={acc.main_acc ?? undefined}
                   isAdmin={isAdmin}
                   onUpdate={isAdmin ? () => handleOpenUpdateAlert(acc) : undefined}
                   onDelete={isAdmin ? () => handleDeleteAccount(acc.id, acc.title || 'Không có tiêu đề') : undefined}
