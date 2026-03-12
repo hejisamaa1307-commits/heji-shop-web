@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
         hostname: '**.supabase.co',
         pathname: '/storage/v1/object/sign/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '/**',
+      },
     ],
     // Tối ưu để giảm số lần optimize (giảm chi phí Vercel)
     formats: ['image/webp'], // Chỉ dùng webp, bỏ avif để giảm transformations
